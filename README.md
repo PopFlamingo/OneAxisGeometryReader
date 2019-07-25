@@ -34,10 +34,10 @@ VStack {
 ```
 
 And except a result similar to this:
-![Expectation : A red square with the same size as it's sibling text](https://raw.githubusercontent.com/adtrevor/OneAxisGeometryReader/master/readme_ressources/expectation.png)
+![Expectation : A red square with the same size as it's sibling text](https://raw.githubusercontent.com/adtrevor/OneAxisGeometryReader/master/readme_ressources/horizontalgeometryreader.png)
 
 But the actual result is this one:
-![Reality : An overly size rectangle, taking the whole screen, next to the text](https://raw.githubusercontent.com/adtrevor/OneAxisGeometryReader/master/readme_ressources/reality.png)
+![Reality : An overly size rectangle, taking the whole screen, next to the text](https://raw.githubusercontent.com/adtrevor/OneAxisGeometryReader/master/readme_ressources/geometryreader.png)
 
 The SwiftUI API as it currently is seems to except `GeometryReader` to only be used in a place where its parent view size is constrained explicitly.
 The reason why might not seem obious at first but it's definetely understandable when you think about what the layout system does. Many "container views" (`Group`, `HStack`, `VStack`...) define (at least partially) their size  in function of their children, but `GeometryReader` has its contents that define their size in function of their parent. When you nest a `GeometryReader` in an unconstrained container view, you end up in a case where the the *parent size* depends on the *child size*, and where the *child size* depends on the *parent size*, an hardly solvable equation!
