@@ -40,19 +40,16 @@ public struct HorizontalGeometryReader<Content: View> : View {
     var content: (CGFloat)->Content
     @State private var width: CGFloat = 0
     
-    public init(content: @escaping (CGFloat)->Content) {
+    public init(@ViewBuilder content: @escaping (CGFloat)->Content) {
         self.content = content
     }
     
     public var body: some View {
-        Group {
-            content(width)
-        }
-        .frame(minWidth: 0, maxWidth: .infinity)
-        .background(WidthReaderView())
-        .onPreferenceChange(WidthReader.self) { width in
-            self.width = width
-        }
-        
+        content(width)
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .background(WidthReaderView())
+            .onPreferenceChange(WidthReader.self) { width in
+                self.width = width
+            }
     }
 }
