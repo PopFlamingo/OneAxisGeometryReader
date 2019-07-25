@@ -74,7 +74,7 @@ VStack {
 }.padding()
 ```
 With this code, you will get the right result:
-![The right result](https://raw.githubusercontent.com/adtrevor/OneAxisGeometryReader/master/readme_ressources/reality.png)
+![The right result](https://raw.githubusercontent.com/adtrevor/OneAxisGeometryReader/master/readme_ressources/horizontalgeometryreader.png)
 
 
 ## State of this package
