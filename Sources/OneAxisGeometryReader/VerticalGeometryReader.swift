@@ -40,19 +40,17 @@ public struct VerticalGeometryReader<Content: View> : View {
     var content: (CGFloat)->Content
     @State private var height: CGFloat = 0
     
-    public init(content: @escaping (CGFloat)->Content) {
+    public init(@ViewBuilder content: @escaping (CGFloat)->Content) {
         self.content = content
     }
     
     public var body: some View {
-        Group {
-            content(height)
-        }
-        .frame(minHeight: 0, maxHeight: .infinity)
-        .background(HeightReaderView())
-        .onPreferenceChange(HeightReader.self) { height in
-            self.height = height
-        }
+        content(height)
+            .frame(minHeight: 0, maxHeight: .infinity)
+            .background(HeightReaderView())
+            .onPreferenceChange(HeightReader.self) { height in
+                self.height = height
+            }
         
     }
 }
