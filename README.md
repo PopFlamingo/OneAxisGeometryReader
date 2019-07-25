@@ -79,4 +79,4 @@ With this code, you will get the right result:
 
 ## State of this package
 This is an experimental package that may break in the future the internals of SwiftUI evolve.
-View this package as a starting point, it definetely be improved, so don't hesitate to open an issue or a pull request if you think something is missing or if you notice a bug.
+View this package as a starting point, it can definetely be improved, so don't hesitate to open an issue or a pull request if you think something is missing or if you notice a bug.
