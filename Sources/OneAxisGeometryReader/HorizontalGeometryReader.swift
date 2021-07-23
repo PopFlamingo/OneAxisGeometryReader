@@ -16,21 +16,10 @@
 
 import SwiftUI
 
-struct WidthReader : PreferenceKey, Equatable {
-    static var defaultValue: CGFloat = 0
-    
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        // FIXME: What should be done here
-        // Setting value to nextValue ends up erasing the only meaningful value with 0
-        // Maybe a SwiftUI bug ?
-    }
-}
-
-
 struct WidthReaderView : View {
     var body: some View {
         GeometryReader { geometry in
-            Color.clear.preference(key: WidthReader.self, value: geometry.size.width)
+            Color.clear.preference(key: SizeReader.self, value: geometry.size.width)
         }
     }
 }
@@ -48,7 +37,7 @@ public struct HorizontalGeometryReader<Content: View> : View {
         content(width)
             .frame(minWidth: 0, maxWidth: .infinity)
             .background(WidthReaderView())
-            .onPreferenceChange(WidthReader.self) { width in
+            .onPreferenceChange(SizeReader.self) { width in
                 self.width = width
             }
     }

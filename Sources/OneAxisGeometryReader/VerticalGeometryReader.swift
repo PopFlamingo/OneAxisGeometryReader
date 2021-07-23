@@ -16,21 +16,10 @@
 
 import SwiftUI
 
-struct HeightReader : PreferenceKey, Equatable {
-    static var defaultValue: CGFloat = 0
-    
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        // FIXME: What should be done here
-        // Setting value to nextValue ends up erasing the only meaningful value with 0
-        // Maybe a SwiftUI bug ?
-    }
-}
-
-
 struct HeightReaderView : View {
     var body: some View {
         GeometryReader { geometry in
-            Color.clear.preference(key: HeightReader.self, value: geometry.size.height)
+            Color.clear.preference(key: SizeReader.self, value: geometry.size.height)
         }
     }
 }
@@ -48,7 +37,7 @@ public struct VerticalGeometryReader<Content: View> : View {
         content(height)
             .frame(minHeight: 0, maxHeight: .infinity)
             .background(HeightReaderView())
-            .onPreferenceChange(HeightReader.self) { height in
+            .onPreferenceChange(SizeReader.self) { height in
                 self.height = height
             }
         
