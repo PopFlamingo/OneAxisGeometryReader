@@ -24,7 +24,7 @@ struct WidthReaderView : View {
     }
 }
 
-public struct HorizontalGeometryReader<Content: View> : View {
+public struct HGeometryReader<Content: View> : View {
     
     var content: (CGFloat)->Content
     @State private var width: CGFloat = 0

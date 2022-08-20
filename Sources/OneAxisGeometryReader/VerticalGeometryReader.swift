@@ -24,7 +24,7 @@ struct HeightReaderView : View {
     }
 }
 
-public struct VerticalGeometryReader<Content: View> : View {
+public struct VGeometryReader<Content: View> : View {
     
     var content: (CGFloat)->Content
     @State private var height: CGFloat = 0
