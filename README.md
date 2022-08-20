@@ -46,7 +46,7 @@ SwiftUI still handles this as much gracefully as it can: if the container view h
 ## A solution
 OneAxisGeometryReader attempts to solve this issue by only reading the geometry on a specific axis, enabling to break the cyclic size dependency on the other axis it doesn't read:
 ```swift
-HorizontalGeometryReader { width in
+HGeometryReader { width in
 VStack {
     HStack(spacing: 0) {
         Text("Hello world!")
@@ -76,6 +76,7 @@ VStack {
 With this code, you will get the right result:
 ![The right result](https://raw.githubusercontent.com/adtrevor/OneAxisGeometryReader/master/readme_ressources/horizontalgeometryreader.png)
 
+You can also use `VGeometryReader` for a vertical geometry reader.
 
 ## State of this package
 This is an experimental package that may break in the future when the internals of SwiftUI evolve.
